@@ -4,13 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      #principal {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        align-content: space-around;
+      }
+
+      .card {
+        min-width: 200px;
+        max-width: 300px;
+        min-height: 150px;
+        max-height: 75px;
+        color: white;
+        font-size: 20px;
+        background-color: red;
+        border: 1px solid black;
+      }
+
+      .card2 {
+        min-width: 200px;
+        max-width: 300px;
+        min-height: 150px;
+        max-height: 75px;
+        color: white;
+        font-size: 20px;
+        background-color: blue;
+        border: 1px solid black;
+      }
+
+      .end {
+        min-width: 200px;
+        max-width: 300px;
+        min-height: 150px;
+        max-height: 75px;
+        color: white;
+        font-size: 20px;
+        background-color: green;
+        border: 1px solid black;
+      }
+    </style>
   </head>
   <body>
     <div id="principal"></div>
     <script>
       function cartas() {
-        var values = ["1", "2", "3", "4", "5"];
-        var values2 = ["1", "5", "4", "3", "2"];
+        var values = ["1", "2", "3", "4", "5", "6"];
+        var values2 = ["1", "5", "4", "3", "6", "2"];
         var cards = [
           values.sort(function () {
             return Math.random() - 0.5;
@@ -23,14 +71,88 @@
         var insert = document.getElementById("principal");
         for (let i = 0; i < values.length; i++) {
           var div = document.createElement("div");
-          div.innerHTML = `${cards[0][i]}
-            </br>
-            ${cards[1][i]}
-            `;
-            insert.append(div);
+          var div2 = document.createElement("div");
+          div.className = "card";
+          div2.className = "card2";
+          div.innerHTML = `${cards[0][i]}`;
+          div2.innerHTML = `${cards[1][i]}`;
+          insert.append(div);
+          insert.append(div2);
         }
+        //  console.log(cards);
+      }
+      cartas();
 
-        console.log(cards);
+      var card = document.querySelectorAll(".card");
+
+      // card.forEach((item, index) => {
+      //   item.addEventListener("click", (e) => {
+      //     if (item.className == "card active") {
+      //       item.className = "card";
+      //     } else {
+      //       item.className += " active";
+      //     }
+      //     let active = document.querySelectorAll(".card.active");
+      //     if (active.length > 1) {
+      //       item.className = "card";
+
+      //     }
+
+      //   });
+      // });
+
+      var card2 = document.querySelectorAll(".card2");
+
+      // card2.forEach((item, index) => {
+      //   item.addEventListener("click", (e) => {
+      //     if (item.className == "card2 active") {
+      //       item.className = "card2";
+      //     } else {
+      //       item.className += " active";
+      //     }
+      //     let active = document.querySelectorAll(".card.active");
+      //     if (active.length > 1) {
+      //       item.className = "card";
+
+      //     }
+      //   });
+      // });
+
+      checkCards(card, "card");
+      checkCards(card2, "card2");
+
+      function checkCards(cards, type) {
+        cards.forEach((item, index) => {
+          item.addEventListener("click", (e) => {
+            if (item.className == type + " active") {
+              item.className = type;
+            } else {
+              item.className += " active";
+            }
+            if (item.className == "end active") {
+              item.className = "end";
+            }
+            let active = document.querySelectorAll("." + type + ".active");
+            if (active.length > 1) {
+              item.className = type;
+            }
+
+            success();
+          });
+        });
+      }
+
+      function success() {
+        var actived = document.getElementsByClassName("active");
+        console.log(actived);
+
+        if (
+          actived.length > 1 &&
+          actived[1].innerHTML == actived[0].innerHTML
+        ) {
+          actived[1].className = "end";
+          actived[0].className = "end";
+        }
       }
     </script>
   </body>
