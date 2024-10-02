@@ -20,14 +20,27 @@
       }
 
       .card {
-        min-width: 200px;
+        min-width: 150px;
         max-width: 300px;
         min-height: 150px;
-        max-height: 75px;
+        max-height: 300px;
         color: white;
         font-size: 20px;
-        background-color: red;
+        background-image: url(images/random.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
         border: 1px solid black;
+      }
+
+      .card-img,
+      .card2-img {
+        opacity: 0;
+        width: 150px;
+        height: 150px;
+      }
+
+      .active {
+        opacity: 1;
       }
 
       .card2 {
@@ -37,15 +50,15 @@
         max-height: 75px;
         color: white;
         font-size: 20px;
-        background-color: blue;
+        background-image: url(images/random.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
         border: 1px solid black;
       }
 
       .end {
-        min-width: 200px;
-        max-width: 300px;
-        min-height: 150px;
-        max-height: 75px;
+        width: 150px;
+        height: 150px;
         color: white;
         font-size: 20px;
         background-color: green;
@@ -57,8 +70,8 @@
     <div id="principal"></div>
     <script>
       function cartas() {
-        var values = ["1", "2", "3", "4", "5", "6"];
-        var values2 = ["1", "5", "4", "3", "6", "2"];
+        var values = ["1", "2", "3", "4", "5", "6","7","8","9","10","11","12"];
+        var values2 = ["11","7","1","12", "5", "4","8","10", "3", "6", "2","9"];
         var cards = [
           values.sort(function () {
             return Math.random() - 0.5;
@@ -72,10 +85,20 @@
         for (let i = 0; i < values.length; i++) {
           var div = document.createElement("div");
           var div2 = document.createElement("div");
+          var img = document.createElement("img");
+          var img2 = document.createElement("img");
+          img.className = "card-img";
+          img.draggable = false;
+          img2.draggable = false;
+          img2.className = "card-img";
           div.className = "card";
-          div2.className = "card2";
-          div.innerHTML = `${cards[0][i]}`;
-          div2.innerHTML = `${cards[1][i]}`;
+          div2.className = "card";
+          img.src = `images/${cards[0][i]}.jpg`;
+          img2.src = `images/${cards[1][i]}.jpg`;
+          img.dataset["val"] = cards[0][i];
+          img2.dataset["val"] = cards[1][i];
+          div.append(img);
+          div2.append(img2);
           insert.append(div);
           insert.append(div2);
         }
@@ -83,43 +106,12 @@
       }
       cartas();
 
-      var card = document.querySelectorAll(".card");
+      var card = document.querySelectorAll(".card-img");
 
-      // card.forEach((item, index) => {
-      //   item.addEventListener("click", (e) => {
-      //     if (item.className == "card active") {
-      //       item.className = "card";
-      //     } else {
-      //       item.className += " active";
-      //     }
-      //     let active = document.querySelectorAll(".card.active");
-      //     if (active.length > 1) {
-      //       item.className = "card";
+      var card2 = document.querySelectorAll(".card2-img");
 
-      //     }
-
-      //   });
-      // });
-
-      var card2 = document.querySelectorAll(".card2");
-
-      // card2.forEach((item, index) => {
-      //   item.addEventListener("click", (e) => {
-      //     if (item.className == "card2 active") {
-      //       item.className = "card2";
-      //     } else {
-      //       item.className += " active";
-      //     }
-      //     let active = document.querySelectorAll(".card.active");
-      //     if (active.length > 1) {
-      //       item.className = "card";
-
-      //     }
-      //   });
-      // });
-
-      checkCards(card, "card");
-      checkCards(card2, "card2");
+      checkCards(card, "card-img");
+      // checkCards(card2, "card2-img");
 
       function checkCards(cards, type) {
         cards.forEach((item, index) => {
@@ -132,27 +124,45 @@
             if (item.className == "end active") {
               item.className = "end";
             }
+
             let active = document.querySelectorAll("." + type + ".active");
             if (active.length > 1) {
-              item.className = type;
-            }
+              item.className = type + " active";
+              console.log(active);
 
-            success();
+              let result = success();
+              console.log(result);
+
+              if (result == false) {
+                setTimeout(() => {
+                  active.forEach((element) => {
+                    element.className = type;
+                  });
+                }, 500);
+              } else {
+                success();
+              }
+            }
           });
         });
       }
 
       function success() {
         var actived = document.getElementsByClassName("active");
-        console.log(actived);
+        console.log(actived[0].dataset["val"]);
+        console.log(actived[1].dataset["val"]);
+
+        // if (actived.length > 2 && actived[1].dataset["val"] != actived[0].dataset["val"]) {
+        //    return actived[1].className = "card2-img", actived[0].className = "card-img";
+        // }
 
         if (
           actived.length > 1 &&
-          actived[1].innerHTML == actived[0].innerHTML
+          actived[0].dataset["val"] == actived[1].dataset["val"]
         ) {
-          actived[1].className = "end";
-          actived[0].className = "end";
+          return (actived[1].className = "end"), (actived[0].className = "end");
         }
+        return false;
       }
     </script>
   </body>
