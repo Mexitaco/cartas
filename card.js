@@ -12,24 +12,6 @@ function cartas() {
 
   var insert = document.getElementById("principal");
   for (let i = 0; i < values.length; i++) {
-    //  var div = document.createElement("div");
-    //  var div2 = document.createElement("div");
-    //  var img = document.createElement("img");
-    //  var img2 = document.createElement("img");
-    //  img.className = "card-img";
-    //  img.draggable = false;
-    //  img2.draggable = false;
-    //  img2.className = "card-img";
-    //  div.className = "card";
-    //  div2.className = "card";
-    //  img.src = `images/${cards[0][i]}.jpg`;
-    //  img2.src = `images/${cards[1][i]}.jpg`;
-    //  img.dataset["val"] = cards[0][i];
-    //  img2.dataset["val"] = cards[1][i];
-    //  div.append(img);
-    //  div2.append(img2);
-    //  insert.append(div);
-    //  insert.append(div2);
     insert.innerHTML += `
      <div class="flip-card" data-val="${cards[0][i]}">
    <div class="flip-card-inner">
@@ -53,16 +35,13 @@ function cartas() {
  </div>
     `;
   }
-  //  console.log(cards);
 }
-cartas();
+//cartas();
 
-//  var card = document.querySelectorAll(".card-img");
 var card = document.querySelectorAll(".flip-card");
-var card2 = document.querySelectorAll(".card2-img");
 
 checkCards(card, "flip-card");
-// checkCards(card2, "card2-img");
+var cont_click = 0;
 
 function checkCards(cards, type) {
   cards.forEach((item, index) => {
@@ -97,8 +76,15 @@ function checkCards(cards, type) {
           success();
         }
       }
+
+      if (item.className == "flip-card end") {
+         cont_click=cont_click;
+      }else {
+         cont_click++;
+      }
+      console.log(cont_click);
     });
-  });
+  }); 
 }
 
 function success() {
@@ -117,3 +103,5 @@ function success() {
   }
   return false;
 }
+
+
