@@ -8,14 +8,126 @@
   </head>
   <body>
     <div id="principal">
-
-       <div class="menu">
-         <div class="cheems"></div>
-         <div class="completo"></div>
-         <div class="ala"></div>
-         <div class="completo reverse2"></div>
-         <div class="ala reverse"></div>
-       </div>
+      <div class="menu">
+        <div class="logo">
+          <div class="medal">
+            <div class="meme">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  id="circlePath"
+                  fill="none"
+                  stroke-width="4"
+                  stroke="hsl(0 100% 50% / 0.5)"
+                  d="
+                         M 10, 50
+                         a 40,40 0 1,1 80,0
+                         a 40,40 0 1,1 -80,0
+                       "
+                />
+                <text
+                  id="text"
+                  font-family="monospace"
+                  font-size="12"
+                  font-weight="bold"
+                  fill="var(--text-1)"
+                >
+                  <textPath id="textPath" href="#circlePath">meme</textPath>
+                </text>
+              </svg>
+            </div>
+            <div class="cheems">
+              <div class="circle"></div>
+              <img src="images/patita.png" alt="" class="patita" />
+            </div>
+            <!-- <div class="completo"></div>
+          <div class="ala"></div>
+          <div class="completo reverse2"></div>
+          <div class="ala reverse"></div> -->
+            <div class="rama rama-color">
+              <div class="hoja h-1"></div>
+              <div class="hoja h-2"></div>
+              <div class="hoja h-3"></div>
+              <div class="hoja h-4"></div>
+              <div class="hoja h-5"></div>
+              <div class="hoja h-6"></div>
+              <div class="hoja h-7"></div>
+              <div class="hoja h-8"></div>
+              <div class="hoja h-9"></div>
+              <div class="hoja h-10"></div>
+              <div class="hoja h-11"></div>
+              <div class="hoja h-12"></div>
+              <div class="hoja h-13"></div>
+              <div class="hoja h-14"></div>
+              <div class="hoja h-15"></div>
+              <div class="hoja h-16"></div>
+              <div class="hoja h-17"></div>
+              <div class="hoja h-18"></div>
+              <div class="hoja h-19"></div>
+              <div class="hoja h-20"></div>
+              <div class="hoja h-21"></div>
+              <div class="hoja h-22"></div>
+              <div class="hoja h-23"></div>
+              <div class="hoja h-24"></div>
+              <div class="hoja h-25"></div>
+              <div class="hoja h-26"></div>
+              <div class="hoja h-27"></div>
+              <div class="hoja h-28"></div>
+              <div class="hoja h-29"></div>
+              <!-- <div class="hoja h-30"></div> -->
+              <div class="hoja h-31"></div>
+              <div class="hoja h-32"></div>
+              <div class="hoja h-33"></div>
+              <div class="hoja h-34"></div>
+              <div class="hoja h-35"></div>
+              <div class="hoja h-36"></div>
+              <div class="hoja h-37"></div>
+              <div class="hoja h-38"></div>
+              <div class="hoja h-39"></div>
+              <div class="hoja h-40"></div>
+              <div class="hoja h-41"></div>
+              <div class="hoja h-42"></div>
+            </div>
+          </div>
+        </div>
+        <div class="botones">
+          <button id="go">Iniciar</button>
+          <button id="rules">Reglas</button>
+        </div>
+      </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="instruction">
+          <ul>
+            <li>Encuentra el par de la imagen para ganar puntos.</li>
+            <li>Selecciona la difultad.</li>
+            <li>Gana antes de que el tiempo se acabe</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="myModal2" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-head"><span class="close">&times;</span></div>
+        <div class="instruction_dificult">
+          <div class="dificult">
+            <button class="modal_meme easy"></button>
+            <span class="easy">Fácil</span>
+          </div>
+          <div class="dificult">
+            <button class="modal_meme medium"></button>
+            <span class="silver">Medio</span>
+          </div>
+          <div class="dificult">
+            <button class="modal_meme hard"></button>
+            <span class="hard">Difícil</span>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="card.js"></script>
   </body>
