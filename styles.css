@@ -35,6 +35,10 @@ main {
   cursor: pointer;
 }
 
+.flip-card:hover {
+  transform: scale(1.1);
+}
+
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -50,7 +54,7 @@ main {
   height: 100%;
   color: white;
   font-size: 20px;
-  background-image: url(images/random.jpg);
+  background-image: url(images/random.png);
   background-size: cover;
   background-repeat: no-repeat;
   /* border: 1px solid black; */
@@ -235,25 +239,25 @@ path {
     rotate: -16deg;
   }
   35% {
-   rotate: -10deg;
+    rotate: -10deg;
   }
   40% {
-   rotate: 0deg;
+    rotate: 0deg;
   }
   45% {
-   rotate: -10deg;
+    rotate: -10deg;
   }
   50% {
-   rotate: 0deg;
+    rotate: 0deg;
   }
   55% {
-   rotate: -10deg;
+    rotate: -10deg;
   }
   60% {
-   rotate: -5deg;
+    rotate: -5deg;
   }
-  65%{
-   rotate: 0deg;
+  65% {
+    rotate: 0deg;
   }
   100% {
     rotate: 5deg;
@@ -463,9 +467,9 @@ path {
 }
 
 .h-29 {
-  transform: rotate(35deg);
-  bottom: -5%;
-  left: 62%;
+  transform: rotate(38deg);
+  bottom: -5.5%;
+  left: 65%;
 }
 
 .h-30 {
